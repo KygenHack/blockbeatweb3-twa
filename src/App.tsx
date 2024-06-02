@@ -4,9 +4,20 @@ import { Counter } from "./components/Counter";
 import { Jetton } from "./components/Jetton";
 import { TransferTon } from "./components/TransferTon";
 import styled from "styled-components";
-import { Button, FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
+import { FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
 import { useTonConnect } from "./hooks/useTonConnect";
 import { CHAIN } from "@tonconnect/protocol";
+import {
+  Page,
+  Navbar,
+  Block,
+  Button,
+  List,
+  ListItem,
+  Link,
+  BlockTitle,
+} from 'konsta/react';
+
 import "@twa-dev/sdk";
 
 const StyledApp = styled.div`
@@ -30,7 +41,11 @@ function App() {
   const { network } = useTonConnect();
 
   return (
-    <StyledApp>
+    <Page>
+      <Navbar title="My App" />
+
+      <Block strong>
+      <StyledApp>
       <AppContainer>
         <FlexBoxCol>
           <FlexBoxRow>
@@ -48,7 +63,19 @@ function App() {
           <Jetton />
         </FlexBoxCol>
       </AppContainer>
-    </StyledApp>
+    </StyledApp>>
+      </Block>
+      <BlockTitle>Navigation</BlockTitle>
+      <List>
+        <ListItem href="/about/" title="About" />
+        <ListItem href="/form/" title="Form" />
+      </List>
+
+      <Block strong className="flex space-x-4">
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+      </Block>
+    </Page>
   );
 }
 
